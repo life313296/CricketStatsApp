@@ -1,2 +1,0 @@
-# CricketStatsApp
-Cricket Stats App

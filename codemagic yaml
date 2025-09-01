@@ -1,0 +1,27 @@
+workflows:
+  cricketstatsapp-android:
+    name: CricketStatsApp Android Workflow
+    max_build_duration: 60
+    environment:
+      flutter: stable
+      vars:
+        PROJECT_NAME: CricketStatsApp
+    scripts:
+      - name: Install Flutter packages
+        script: |
+          echo "Installing dependencies..."
+          flutter pub get
+      - name: Clean old builds
+        script: |
+          echo "Cleaning old build artifacts..."
+          flutter clean
+      - name: Build Android AppBundle
+        script: |
+          echo "Building Android AppBundle..."
+          flutter build appbundle --release
+    artifacts:
+      - build/app/outputs/bundle/release/app-release.aab
+    publishing:
+      email:
+        recipients:
+          - your-email@example.com
